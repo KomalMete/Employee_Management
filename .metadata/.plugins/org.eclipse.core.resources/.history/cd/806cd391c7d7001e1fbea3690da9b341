@@ -1,0 +1,14 @@
+package com.example.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class DepartmentServiceImpl implements DepartmentService{
+
+	@Override
+	public String addDepartment(String deptName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

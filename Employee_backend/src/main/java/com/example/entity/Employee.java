@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -21,18 +24,19 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Table
 public class Employee {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(length = 6, name = "first_name")
+	@Column(name = "first_name")
 	@NotEmpty(message = "firstname cannot be empty")
 	private String firstName;
 	
-	@Column(length = 6, name = "last_name")
-	@NotEmpty(message = "firstname cannot be empty")
+	@Column(name = "last_name")
+	@NotEmpty(message = "lastname cannot be empty")
 	private String lastName;
 	
 	@Column(length = 25,unique = true)
@@ -48,5 +52,9 @@ public class Employee {
 	@Size(min = 10,max = 10)
 	private String phone;
 	
+	@ManyToOne
+	@JoinColumn(name = "dept_id")
+	private Department department;
+
 	
 }

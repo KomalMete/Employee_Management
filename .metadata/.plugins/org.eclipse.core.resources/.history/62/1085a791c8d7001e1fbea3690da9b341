@@ -1,0 +1,30 @@
+package com.example.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.entity.Department;
+import com.example.repository.DepartmentRepository;
+
+@Service
+public class DepartmentServiceImpl implements DepartmentService{
+
+	@Autowired
+	private DepartmentRepository deptRepo;
+	
+	@Override
+	public String addDepartment(Department dept) {
+		
+		if(dept == null)
+		{
+			return "please put correct information";
+		}
+		else
+		{
+			deptRepo.save(dept);
+			return "Department added successfully";
+		}
+		
+	}
+
+}
