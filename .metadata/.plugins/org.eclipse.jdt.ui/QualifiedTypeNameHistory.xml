@@ -36,4 +36,5 @@
     <fullyQualifiedTypeName name="com.example.dto.DeptDTO"/>
     <fullyQualifiedTypeName name="com.example.entity.Department"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
 </qualifiedTypeNameHistroy>
