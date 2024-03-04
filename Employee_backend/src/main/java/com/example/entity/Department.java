@@ -27,7 +27,7 @@ public class Department {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	
+	@NotEmpty(message = "department name cannot be empty")
 	private String deptName;
 	
 

@@ -60,7 +60,7 @@ const AdminHome =() =>{
                     <tbody key={item.id}>
                         <td className="col-2">{item.id}</td>
                         <td className="col-4">{item.deptName}</td>
-                        <td className="col-2"><button  type="button" className="btn btn-success">Edit</button></td>
+                        <td className="col-2"><button  type="button" className="btn btn-success" onClick={()=>{("/dept/edit/${item.id}")}}>Edit</button></td>
                         <td className="col-2"><button  type="button" className="btn btn-danger" onClick={()=>{HandleDelete(item.id)}}>Delete</button></td>
                     </tbody>
                     ))}
