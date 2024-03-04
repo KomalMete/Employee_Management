@@ -10,7 +10,25 @@ const AddDepartment =()=>{
 
     const [name, setName] = useState("");
     const { id } = useParams();
+    const [button, setbutton] = useState("Add Product");
     const navigate = useNavigate();
+
+    const init=()=>{
+    if(id){
+        axios.get(`http://localhost:8080/dept/getdept/${id}`)
+        .then((response) => {
+            setName(response.data.name);
+            setbutton("Confirm");
+        })
+        .catch((error) => {
+            console.log("Something went wrong", error);
+          });
+    }
+    };
+
+    useEffect(() => {
+        init();
+      }, []);
 
     const HandleAddDepartment =()=>{
         if(id){
@@ -20,7 +38,7 @@ const AddDepartment =()=>{
             axios.put("http://localhost:8080"+"/dept/edit",department)
             .then((response) => {
                 console.log("Printing product data", response.data);
-                
+                navigate("/adminhome");
             })
             .catch((error) => {
                 console.log("Something went wrong", error);
