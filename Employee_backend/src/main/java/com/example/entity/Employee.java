@@ -1,5 +1,7 @@
 package com.example.entity;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,9 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
@@ -52,9 +56,22 @@ public class Employee {
 	@Size(min = 10,max = 10)
 	private String phone;
 	
+	
+	private LocalDate joinDate;
+	
+	@NotNull(message = "salary required")
+	private double salary;
+	
+	@NotEmpty(message = "location required")
+	@Column(length = 100)
+	private String location;
+	
 	@ManyToOne
 	@JoinColumn(name = "dept_id")
 	private Department department;
 
-	
+	 @PrePersist
+	    protected void onCreate() {
+	        joinDate = LocalDate.now(); // Automatically sets the joinDate to the current date
+	    }
 }

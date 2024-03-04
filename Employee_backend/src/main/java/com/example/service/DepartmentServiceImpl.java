@@ -5,8 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.example.dto.DeptDTO;
 import com.example.entity.Department;
 import com.example.repository.DepartmentRepository;
 
