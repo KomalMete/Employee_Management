@@ -7,6 +7,17 @@ const AdminHome =() =>{
 
     const[depts, setDept] = useState([]);
 
+    const HandleDelete=(id)=>{
+        axios.delete("http://localhost:8080"+"/dept/remove/"+id)
+        .then(response =>{
+            console.log("printing data")
+            init();
+        })
+        .catch(error => {
+            console.log('Something went wrong', error);
+        })
+    }
+
     useEffect(() => {
         init();
     }, []);
@@ -25,6 +36,9 @@ const AdminHome =() =>{
     return(
         <div>
             <h1>Department details</h1>
+            <div className='container'>
+
+            
             <div className='row'>
                 <div className="col">
 
@@ -34,22 +48,24 @@ const AdminHome =() =>{
                 </div>
             </div>
             
-            <table className="col-6 mx-6 my-6 offset-2">
+            <table className="col-6 mx-6 my-4 offset-2 border-2">
                     <thead>
                         <tr>
-                        <th className="col-3">ID</th>
-                        <th className="col-3">Department Name</th>
+                        <th className="col-2">ID</th>
+                        <th className="col-4">Department Name</th>
+                       
                         </tr>
                     </thead>
                     {depts.map((item) => (
                     <tbody key={item.id}>
                         <td className="col-2">{item.id}</td>
                         <td className="col-4">{item.deptName}</td>
-                        <td className="col-3"><button  type="button" className="btn btn-success">Edit</button></td>
-                        <td className="col-3"><button  type="button" className="btn btn-danger">Delete</button></td>
+                        <td className="col-2"><button  type="button" className="btn btn-success">Edit</button></td>
+                        <td className="col-2"><button  type="button" className="btn btn-danger" onClick={()=>{HandleDelete(item.id)}}>Delete</button></td>
                     </tbody>
                     ))}
             </table>
+            </div>
         </div>
     );
 
