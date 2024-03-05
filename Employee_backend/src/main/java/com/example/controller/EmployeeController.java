@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.dto.LoginDTO;
 import com.example.entity.Employee;
 import com.example.service.EmployeeService;
 
@@ -27,7 +29,7 @@ public class EmployeeController {
 		return new ResponseEntity<>(empService.getAllEmployee(), HttpStatus.OK);
 	}
 	
-	@PostMapping("/addemp")
+	@PostMapping("/register")
 	public ResponseEntity<?> addEmployee(@RequestBody Employee emp)
 	{
 		return new ResponseEntity<>(empService.addEmployee(emp), HttpStatus.OK);
@@ -43,5 +45,11 @@ public class EmployeeController {
 	public ResponseEntity<?> editEmplyee(@RequestBody Employee emp)
 	{
 		return new ResponseEntity<>(empService.editEmployee(emp), HttpStatus.OK);
+	}
+	
+	@PostMapping("/login")
+	public ResponseEntity<?> loginEmployee(@RequestBody LoginDTO logindto)
+	{
+		return new ResponseEntity<>(empService.loginEmployee(logindto), HttpStatus.OK);
 	}
 }

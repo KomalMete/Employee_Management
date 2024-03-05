@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.dto.LoginDTO;
 import com.example.entity.Employee;
 import com.example.repository.EmployeeRepository;
 
@@ -37,6 +39,13 @@ public class EmployeeServiceImple implements EmployeeService{
 		
 		empRepo.save(emp);
 		return "Employee Details Updated Successfully..";
+	}
+
+	@Override
+	public String loginEmployee(LoginDTO logindto) {
+		Employee emp = empRepo.findByEmailAndPassword(logindto.getEmail(), logindto.getPassword());
+		
+		return "Login Successfull...";
 	}
 	
 

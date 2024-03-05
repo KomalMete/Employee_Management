@@ -8,4 +8,5 @@ import com.example.entity.Employee;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
+	public Employee findByEmailAndPassword(String email, String password);
 }
